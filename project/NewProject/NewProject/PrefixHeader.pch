@@ -1,0 +1,69 @@
+//
+//  PrefixHeader.pch
+//  NewProject
+//
+//  Created by juanMac on 2017/12/25.
+//  Copyright © 2017年 juanMac. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+//引用
+#import "NSString+SHA1.h"
+#import "UserDefaults.h"
+#import "URLClass.h"
+#import "Notifications.h"
+#import "CommonTools.h"
+#import "MBProgressHUD.h"
+#import "AFNetworking.h"
+#import "WWYCommonNetWork.h"
+
+
+//appdelegate代理
+#define SHARE_APP (AppDelegate*)[[UIApplication sharedApplication] delegate]
+
+//屏幕宽高
+#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+
+/**********定义手机型号/系统***************/
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_RETINA ([[UIScreen mainScreen] scale] >= 2.0)
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+
+#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define SCREEN_MIN_LENGTH (MIN(SCREEN_WIDTH, SCREEN_HEIGHT))
+
+//手机型号
+#define IS_IPHONE_4_OR_LESS (IS_IPHONE && SCREEN_MAX_LENGTH < 568.0)
+#define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
+#define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+
+//比例
+#define WidthScale  SCREEN_WIDTH/375.0
+#define HeightScale  SCREEN_HEIGHT/667.0
+
+
+//颜色
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define MAINCOLOR UIColorFromRGB(0x129aee)
+
+
+//设置字体大小
+#define Font(size) [CommonTools myFont:size] //字体的大小
+
+//设置加密方式
+#define MD5(str) [CommonTools md5Str:str]
+#define BASE64(str) [CommonTools base64Str:str]
+
+//弹出框（1.5秒消失）
+#define SHOWALERT(str) [[CommonTools alloc] setHUDWithTextStr:str];
+
+//字符串反转
+#define OVERSTR(str) [CommonTools overturnString:str]
+
+
+
+#endif /* PrefixHeader_pch */
